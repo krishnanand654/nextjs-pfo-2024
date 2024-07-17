@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+/* Light theme */
+[data-theme="light"] {
+  --background-color: #f6f6f6;
+  --text-color: #334155;
+  --border: 1px solid rgb(9, 9, 9);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --background-color: #09090b;
+  --text-color: #cbd5e1;
+  --border: 1px solid rgb(142, 142, 142);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Apply theme variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.bottom-sheet-background,
+.custom-toast-background {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.section-heading {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.custom-border {
+  border: var(--border);
+}
+
+.data-container {
+  margin-top: 10px;
+}
+
+.arrow {
+  transform: rotate(140deg);
+  position: relative;
+  top: -10px;
+  left: 10px;
+  transition: 0.5s ease-in-out;
+}
+
+.custom-card:hover {
+  cursor: pointer;
+}
+
+.custom-card:hover .arrow {
+  transform: rotate(-40deg);
+  transition: 0.5s ease-in-out;
+}
+
+.glowing-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #50e3c2; /* Light blue color */
+  border-radius: 50%; /* Make it a circle */
+  box-shadow: 0 0 10px 3px #50e3c2; /* Glowing effect with the new color */
+  animation: pulse 1.5s infinite; /* Animation */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(80, 227, 194, 0.7); /* Adjust for lighter shade of #50e3c2 */
+  }
+  50% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(80, 227, 194, 0); /* Adjust for lighter shade of #50e3c2 */
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(80, 227, 194, 0); /* Adjust for lighter shade of #50e3c2 */
+  }
+}
