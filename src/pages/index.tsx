@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Notification } from "@/components/Notification";
 import Head from "next/head";
+
 export default function Page() {
   const { generals, blogs, links, projects } = useDataService();
   const { theme, toggleTheme } = useTheme();
@@ -83,16 +84,20 @@ export default function Page() {
             <div className="flex flex-wrap gap-5 mt-5">
               {blogs &&
                 blogs.length > 0 &&
-                blogs.slice(0, 2).map((blog, index) => {
-                  return (
-                    <BlogCard
-                      key={index}
-                      title={blog.title}
-                      content={blog.content}
-                      url={blog.url}
-                    />
-                  );
-                })}
+                blogs
+                  .slice()
+                  .reverse()
+                  .slice(0, 2)
+                  .map((blog, index) => {
+                    return (
+                      <BlogCard
+                        key={index}
+                        title={blog.title}
+                        content={blog.content}
+                        url={blog.url}
+                      />
+                    );
+                  })}
             </div>
           </section>
 
