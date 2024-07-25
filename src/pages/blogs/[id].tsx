@@ -1,6 +1,11 @@
 import { useRouter } from "next/router";
+import Layout from "@/layouts/Layout";
 
 export default function Page() {
   const router = useRouter();
-  return <h1>Post: {router.query.id}</h1>;
+  return (
+    <Layout>
+      <h1>Post: {router.query.id}</h1>
+    </Layout>
+  );
 }

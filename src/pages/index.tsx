@@ -1,6 +1,5 @@
 import Layout from "@/layouts/Layout";
 import { useDataService } from "@/data/DataService";
-import { useTheme } from "@/contexts/themes";
 import BlogCard from "@/components/BlogCard";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +10,6 @@ import Head from "next/head";
 
 export default function Page() {
   const { generals, blogs, links, projects } = useDataService();
-  const { theme, toggleTheme } = useTheme();
 
   function highlight(text: string): string {
     return text.replace(/\*(.*?)\*/g, "<strong>$1</strong>");
@@ -26,25 +24,6 @@ export default function Page() {
               <link rel="shortcut icon" href="favicon.png" />
               <title>Krishnanand A</title>
             </Head>
-          </div>
-          <div className="flex justify-end">
-            <button onClick={toggleTheme}>
-              {theme === "light" ? (
-                <Image
-                  src="/dark.png"
-                  width={20}
-                  height={20}
-                  alt="Picture of the author"
-                />
-              ) : (
-                <Image
-                  src="/sun.png"
-                  width={20}
-                  height={20}
-                  alt="Picture of the author"
-                />
-              )}
-            </button>
           </div>
           <>
             <h1 className="text-3xl font-bold mt-10">{generals.name}</h1>
@@ -76,10 +55,16 @@ export default function Page() {
           <section className="mt-28">
             <div className="flex justify-between items-center">
               <h1 className="section-heading">Latest Blogs</h1>
-              <Notification
+              {/* <Notification
                 text="See more"
                 message="Feature is on progress! Swipe to discard the message"
-              />
+              /> */}
+              <Link
+                href="/blogs"
+                className="text-sm underline font-medium mr-3"
+              >
+                See more
+              </Link>
             </div>
             <div className="flex flex-wrap gap-5 mt-5">
               {blogs &&
@@ -95,6 +80,7 @@ export default function Page() {
                         title={blog.title}
                         content={blog.content}
                         url={blog.url}
+                        details={false}
                       />
                     );
                   })}
